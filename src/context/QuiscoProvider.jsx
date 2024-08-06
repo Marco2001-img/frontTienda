@@ -7,10 +7,20 @@ const QuiscoProvider = ({children}) => {
 
     const[categorias, setCategorias] = useState(categoriasDB)
     const[categoriaActual, setcategoriaActual] = useState(categorias[0])
+    const[modal, setModal] = useState(false)
+    const[producto, setProducto] = useState({})
 
     const handleClickCategoria = id => {
         const categoria = categorias.filter(categoria => categoria.id === id)[0]
         setcategoriaActual(categoria)
+    }
+
+    const handleClickModal = () =>{
+        setModal(!modal)
+    }
+
+    const handleSetProducto = producto => {
+        setProducto(producto)
     }
 
     return (
@@ -18,7 +28,11 @@ const QuiscoProvider = ({children}) => {
             value={{
                 categorias,
                 categoriaActual,
-                handleClickCategoria
+                handleClickCategoria,
+                handleClickModal,
+                modal,
+                handleSetProducto,
+                producto
             }}
 
         >{children}</QuiscoConext.Provider>

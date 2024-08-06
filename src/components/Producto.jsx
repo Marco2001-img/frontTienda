@@ -1,8 +1,10 @@
 import { formatearDinero } from "../helpers"
+import useQuisco from "../hooks/useQuisco"
 
 export default function Producto({producto}) {
 
     const {nombre,precio,imagen} = producto
+    const {handleClickModal,handleSetProducto} = useQuisco()
   
     return (
     <div className='border p-3 shadow bg-white'>
@@ -18,7 +20,15 @@ export default function Producto({producto}) {
         </div>
 
         <button
-        className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-5 uppercase font-bold"
+        className="bg-indigo-600
+         hover:bg-indigo-800
+          text-white w-full mt-5 p-5 
+          uppercase font-bold"
+        onClick={() => {
+            handleClickModal()
+            handleSetProducto(producto)
+        }}
+
         >
             Agregar Producto
         </button>
